@@ -42,7 +42,7 @@ TOOL_OPENWATCOM-WL_LDFLAGS.os2   ?= $(NO_SUCH_VARIABLE)
 TOOL_OPENWATCOM-WL_LDFLAGS.win   ?= $(NO_SUCH_VARIABLE)
 
 
-TOOL_OPENWATCOM-WL_LINK_PROGRAM_OUTPUT = $(outbase).map $(outbase).rsp
+TOOL_OPENWATCOM-WL_LINK_PROGRAM_OUTPUT_MAYBE_PRECIOUS = $(outbase).map $(outbase).rsp
 TOOL_OPENWATCOM-WL_LINK_PROGRAM_OUTPUT_MAYBE = $(outbase).sym
 TOOL_OPENWATCOM-WL_LINK_PROGRAM_DEPEND = $(foreach lib,$(libs),$(if $(findstring $(lib),$(subst /,x,$(lib))),, $(lib))) $(othersrc)
 TOOL_OPENWATCOM-WL_LINK_PROGRAM_DEPORD =
