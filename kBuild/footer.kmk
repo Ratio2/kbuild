@@ -95,9 +95,6 @@ _ALL_SRCNAME_TARGETS = \
 # Dependency files. (currently not on target level, only this global stuff)
 _DEPFILES        := $(DEPFILES)    $(DEPFILES.$(KBUILD_TARGET))      $(DEPFILES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH))        $(DEPFILES.$(KBUILD_TARGET_ARCH))    $(DEPFILES.$(KBUILD_TARGET_CPU))     $(DEPFILES.$(KBUILD_TYPE))
 
-# included dependency files.
-_DEPFILES_INCLUDED :=
-
 
 # All kind of output files except for _OBJS and _DEPFILES.
 # Compiling or linking definition outputting other things that $@ and any
