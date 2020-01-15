@@ -490,7 +490,9 @@ PATH_OBJ             = $(PATH_OUT)/obj
 PATH_TARGET          = $(PATH_OBJ)/$(CURSUBDIR)
 PATH_STAGE           = $(PATH_OUT)/stage
 ifndef PATH_INS
- ifdef DESTROOT
+ ifdef DESTDIR
+PATH_INS             = $(DESTDIR)
+ else ifdef DESTROOT
 PATH_INS             = $(DESTROOT)
  else
 PATH_INS             = $(PATH_OUT)/dist
