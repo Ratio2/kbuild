@@ -1187,8 +1187,7 @@ int kmk_builtin_kDepObj(int argc, char **argv, char **envp, PKMKBUILTINCTX pCtx)
     if (!i)
     {
         depOptimize(&This.Core, fFixCase, fQuiet, pszIgnoreExt);
-        fprintf(pOutput, "%s:", pszTarget);
-        depPrint(&This.Core, pOutput);
+        depPrintTargetWithDeps(&This.Core, pOutput, pszTarget, 1 /*fEscapeTarget*/);
         if (fStubs)
             depPrintStubs(&This.Core, pOutput);
     }

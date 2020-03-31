@@ -468,8 +468,7 @@ int main(int argc, char *argv[])
     if (!i)
     {
         depOptimize(&This, fFixCase, 0 /* fQuiet */, NULL /*pszIgnoredExt*/);
-        fprintf(pOutput, "%s:", pszTarget);
-        depPrint(&This, pOutput);
+        depPrintTargetWithDeps(&This, pOutput, pszTarget, 1 /*fEscapeTarget*/);
         if (fStubs)
             depPrintStubs(&This, pOutput);
     }

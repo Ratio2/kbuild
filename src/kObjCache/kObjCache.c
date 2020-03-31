@@ -1133,9 +1133,8 @@ static void kOCDepWriteToFile(PKOCDEP pDepState, const char *pszFilename, const 
     while ((psz = strchr(psz, '\\')) != NULL)
         *psz++ = '/';
 
-    fprintf(pFile, "%s:", pszObjFileAbs);
+    depPrintTargetWithDeps(&pDepState->Core, pFile, pszObjFileAbs, 1 /*fEscapeTarget*/);
     free(pszObjFileAbs);
-    depPrint(&pDepState->Core, pFile);
     if (fGenStubs)
         depPrintStubs(&pDepState->Core, pFile);
 
