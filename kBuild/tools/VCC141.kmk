@@ -140,7 +140,7 @@ TOOL_VCC141_PDB = $(dir $(1))$(tolower $(notdir $(1))).$(2)
 # Properties used by kBuild
 #
 TOOL_VCC141_COBJSUFF         ?= .obj
-TOOL_VCC141_CFLAGS           ?= -TC -nologo -Zi
+TOOL_VCC141_CFLAGS           ?= -TC -nologo -Zi -ZH:SHA_256
 TOOL_VCC141_CFLAGS.debug     ?=
 TOOL_VCC141_CFLAGS.dbgopt    ?= -O2
 TOOL_VCC141_CFLAGS.release   ?= -O2
@@ -149,7 +149,7 @@ TOOL_VCC141_CINCS            ?= $(PATH_TOOL_VCC141_INC)
 TOOL_VCC141_CDEFS            ?=
 
 TOOL_VCC141_CXXOBJSUFF       ?= .obj
-TOOL_VCC141_CXXFLAGS         ?= -TP -nologo -Zi
+TOOL_VCC141_CXXFLAGS         ?= -TP -nologo -Zi -ZH:SHA_256
 TOOL_VCC141_CXXFLAGS.debug   ?=
 TOOL_VCC141_CXXFLAGS.dbgopt  ?= -O2
 TOOL_VCC141_CXXFLAGS.release ?= -O2
