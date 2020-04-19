@@ -277,7 +277,7 @@ static int kBuiltinOptEnvAppendPrepend(PKMKBUILTINCTX pCtx, char ***ppapszEnv, u
         }
         return kBuiltinOptEnvAddVar(pCtx, ppapszEnv, pcEnvVars, pcAllocatedEnvVars, cVerbosity, pszValue);
     }
-    return errx(pCtx, 1, "Missing '=': -E %s", pszValue);
+    return errx(pCtx, 1, "Missing '=': -%c %s", fAppend ? 'A' : 'D', pszValue);
 }
 
 
