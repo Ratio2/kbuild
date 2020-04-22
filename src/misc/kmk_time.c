@@ -313,6 +313,7 @@ int main(int argc, char **argv)
                 fprintf(stderr, "%s: error: quote_argv failed\n");
                 return 8;
             }
+            fUnquoted = 1; /* Don't quote them again in the next iteration. */
         }
 
         GetSystemTimeAsFileTime(&ftStart);
