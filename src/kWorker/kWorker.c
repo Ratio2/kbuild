@@ -7647,7 +7647,7 @@ static PVOID WINAPI kwSandbox_Kernel32_MapViewOfFile(HANDLE hSection, DWORD dwDe
                     cNew *= 2;
                 else
                     cNew = 32;
-                pvNew = kHlpRealloc(g_Sandbox.paMemMappings, cNew * sizeof(g_Sandbox.paMemMappings));
+                pvNew = kHlpRealloc(g_Sandbox.paMemMappings, cNew * sizeof(g_Sandbox.paMemMappings[0]));
                 if (pvNew)
                     g_Sandbox.paMemMappings = (PKWMEMMAPPING)pvNew;
                 else
