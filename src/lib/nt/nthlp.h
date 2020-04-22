@@ -89,6 +89,15 @@ static __inline void birdNtTimeToTimeSpec(__int64 iNtTime, BirdTimeSpec_T *pTime
 }
 
 
+static __inline __int64 birdNtTimeFromTimeSpec(BirdTimeSpec_T const *pTimeSpec)
+{
+    __int64 iNtTime = pTimeSpec->tv_sec * 10000000;
+    iNtTime += pTimeSpec->tv_nsec / 100;
+    iNtTime += BIRD_NT_EPOCH_OFFSET_UNIX_100NS;
+    return iNtTime;
+}
+
+
 static __inline void birdNtTimeToTimeVal(__int64 iNtTime, BirdTimeVal_T *pTimeVal)
 {
     iNtTime -= BIRD_NT_EPOCH_OFFSET_UNIX_100NS;
