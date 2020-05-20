@@ -408,6 +408,11 @@ KBUILD_HOST_DOT_ARCH   = $(KBUILD_HOST).$(KBUILD_TARGET_ARCH)
 # Paths and stuff.
 #
 
+## Cache this query.
+if1of (quote,$(KMK_FEATURES))
+ KMK_WITH_QUOTING := 1
+endif
+
 # Adjust DEPTH first.
 DEPTH := $(strip $(DEPTH))
 ifeq ($(DEPTH),)
