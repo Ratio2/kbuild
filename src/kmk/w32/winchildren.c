@@ -550,8 +550,8 @@ void MkWinChildInit(unsigned int cJobSlots)
                     else
                         Info.BasicLimitInformation.LimitFlags &= ~JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
                     if (!SetInformationJobObject(hJob, JobObjectExtendedLimitInformation, &Info, sizeof(Info)))
-                        OSN(message, 0, _("SetInformationJobObject(%s,JobObjectExtendedLimitInformation,{%s},) failed: %u"),
-                            pszJobName, win_job_object_mode, GetLastError());
+                        OSSN(message, 0, _("SetInformationJobObject(%s,JobObjectExtendedLimitInformation,{%s},) failed: %u"),
+                             pszJobName, win_job_object_mode, GetLastError());
                 }
                 else
                     OSN(message, 0, _("QueryInformationJobObject(%s,JobObjectExtendedLimitInformation,,,) failed: %u"),
@@ -1282,7 +1282,7 @@ static int mkWinChildcareWorkerCreateProcess(PWINCHILDCAREWORKER pWorker, WCHAR 
 #ifdef MKWINCHILD_DO_SET_PROCESSOR_GROUP
         if (g_cProcessorGroups > 1)
         {
-            GROUP_AFFINITY Affinity = { 0, pWorker->iProcessorGroup, { 0, 0, 0 } };
+            GROUP_AFFINITY Affinity = { 0 /* == all active apparently */, pWorker->iProcessorGroup, { 0, 0, 0 } };
             fRet = g_pfnSetThreadGroupAffinity(ProcInfo.hThread, &Affinity, NULL);
             assert(fRet);
         }
@@ -2489,7 +2489,7 @@ static unsigned int __stdcall mkWinChildcareWorkerThread(void *pvUser)
      */
     if (g_cProcessorGroups > 1)
     {
-        GROUP_AFFINITY Affinity = { 0 /* == all active apparently */ , pWorker->iProcessorGroup, { 0, 0, 0 } };
+        GROUP_AFFINITY Affinity = { 0 /* == all active apparently */, pWorker->iProcessorGroup, { 0, 0, 0 } };
         BOOL fRet = g_pfnSetThreadGroupAffinity(GetCurrentThread(), &Affinity, NULL);
         assert(fRet); (void)fRet;
 # ifndef NDEBUG

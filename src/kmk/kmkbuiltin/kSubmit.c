@@ -587,8 +587,8 @@ static int kSubmitSpawnWorker(PKMKBUILTINCTX pCtx, PWORKERINSTANCE pWorker, int 
 
                             if (iProcessorGroup >= 0 && g_pfnSetThreadGroupAffinity)
                             {
-                                GROUP_AFFINITY NewAff = { ~(uintptr_t)0, (WORD)iProcessorGroup, 0, 0, 0 };
-                                GROUP_AFFINITY OldAff = {             0,                     0, 0, 0, 0 };
+                                GROUP_AFFINITY OldAff = { 0,                                                    0, 0, 0, 0 };
+                                GROUP_AFFINITY NewAff = { 0 /* == all active apparently */, (WORD)iProcessorGroup, 0, 0, 0 };
                                 if (!g_pfnSetThreadGroupAffinity(ProcInfo.hThread, &NewAff, &OldAff))
                                     warnx(pCtx, "warning: Failed to set processor group to %d: %u\n",
                                           iProcessorGroup, GetLastError());
