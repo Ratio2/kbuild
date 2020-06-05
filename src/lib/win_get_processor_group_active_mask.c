@@ -69,7 +69,6 @@ KAFFINITY win_get_processor_group_active_mask(unsigned iGroup)
         uBuf.Info.Size = cbBuf = sizeof(uBuf);
         if (pfnGetLogicalProcessorInformationEx(RelationGroup, &uBuf.Info, &cbBuf))
         {
-            __debugbreak();
             SetLastError(0);
             if (iGroup < uBuf.Info.Group.MaximumGroupCount)
                 return uBuf.Info.Group.GroupInfo[iGroup].ActiveProcessorMask;
