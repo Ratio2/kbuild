@@ -45,6 +45,7 @@ kUtil_SOURCES = \
 	kbuild_version.c
 kUtil_SOURCES.win = \
 	msc_buffered_printf.c \
+	win_get_processor_group_active_mask.c \
 	nt_fullpath.c \
 	nt_fullpath_cached.c \
 	quote_argv.c \
