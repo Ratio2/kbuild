@@ -659,6 +659,19 @@ void dir_cache_invalid_all(void)
 }
 
 /**
+ * Invalidate the whole directory cache and closes all open handles.
+ *
+ * Used by $(dircache-ctl invalidate-and-close-dirs)
+ * @param   including_root      Also close the root directory.
+ * @note    Multi-thread safe.
+ */
+void dir_cache_invalid_all_and_close_dirs(int including_root)
+{
+    g_cInvalidates++;
+    kFsCacheInvalidateAllAndCloseDirs(g_pFsCache, !!including_root);
+}
+
+/**
  * Invalidate missing bits of the directory cache.
  *
  * Used by $(dircache-ctl invalidate-missing)

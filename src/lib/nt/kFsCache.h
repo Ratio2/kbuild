@@ -554,6 +554,7 @@ PKFSCACHE   kFsCacheCreate(KU32 fFlags);
 void        kFsCacheDestroy(PKFSCACHE);
 void        kFsCacheInvalidateMissing(PKFSCACHE pCache);
 void        kFsCacheInvalidateAll(PKFSCACHE pCache);
+void        kFsCacheInvalidateAllAndCloseDirs(PKFSCACHE pCache, KBOOL fIncludingRoot);
 void        kFsCacheInvalidateCustomMissing(PKFSCACHE pCache);
 void        kFsCacheInvalidateCustomBoth(PKFSCACHE pCache);
 KBOOL       kFsCacheSetupCustomRevisionForTree(PKFSCACHE pCache, PKFSOBJ pRoot);

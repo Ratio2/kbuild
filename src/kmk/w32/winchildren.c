@@ -3647,7 +3647,7 @@ void MkWinChildReExecMake(char **papszArgs, char **papszEnv)
      * Flush the file system cache to avoid messing up tools fetching
      * going on in the "exec'ed" make by keeping directories open.
      */
-    dir_cache_invalid_all();
+    dir_cache_invalid_all_and_close_dirs(1);
 #endif
 
     /*
