@@ -3642,6 +3642,13 @@ void MkWinChildReExecMake(char **papszArgs, char **papszEnv)
     if (rc != 0)
         ON(fatal, NILF, _("MkWinChildReExecMake: mkWinChildcareWorkerConvertEnvironment failed: %u\n"), rc);
 
+#ifdef KMK
+    /*
+     * Flush the file system cache to avoid messing up tools fetching
+     * going on in the "exec'ed" make by keeping directories open.
+     */
+    dir_cache_invalid_all();
+#endif
 
     /*
      * Fill out the startup info and try create the process.
