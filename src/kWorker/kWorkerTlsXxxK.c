@@ -57,7 +57,8 @@ __declspec(dllexport) ULONG               g_idxTls              = ~(ULONG)0;
 /**
  * Initialization data.
  */
-static char const g_abDummy[TLS_SIZE] = {0x42};
+//static char const g_abDummy[TLS_SIZE] = {0x42};
+static char g_abDummy[TLS_SIZE] = {0};
 
 /**
  * The TLS directory entry.  Not possible to get more than one from the linker
@@ -87,7 +88,8 @@ __declspec(dllexport) void __stdcall DummyTlsCallback(void *hDll, DWORD dwReason
     (void)hDll; (void)dwReason; (void)pvContext;
     if (dwReason == DLL_PROCESS_ATTACH)
     {
-        HMODULE hModExe = (HMODULE)(ULONG_PTR)KWORKER_BASE;
+        //HMODULE hModExe = (HMODULE)(ULONG_PTR)KWORKER_BASE;
+        HMODULE hModExe = GetModuleHandleW(NULL);
         KWLDRTLSALLOCATIONHOOK *pfnHook = (KWLDRTLSALLOCATIONHOOK *)GetProcAddress(hModExe, "kwLdrTlsAllocationHook");
         if (pfnHook)
         {
