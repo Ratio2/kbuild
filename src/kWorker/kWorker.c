@@ -13181,8 +13181,6 @@ int main(int argc, char **argv)
         }
     }
 #endif
-/// quick and dirty...
-LoadLibraryA("E:\\vbox\\svn\\trunk\\tools\\win.amd64\\vcc\\v14.2\\Tools\\MSVC\\14.26.28801\\bin\\Hostx64\\x64\\mspdbcore.dll");
 
     /*
      * Register our Control-C and Control-Break handlers.
