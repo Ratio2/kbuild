@@ -299,6 +299,8 @@ typedef enum KFSLOOKUPERROR
     KFSLOOKUPERROR_NOT_FOUND,
     /** The path is too long. */
     KFSLOOKUPERROR_PATH_TOO_LONG,
+    /** The path is too short. */
+    KFSLOOKUPERROR_PATH_TOO_SHORT,
     /** Unsupported path type. */
     KFSLOOKUPERROR_UNSUPPORTED,
     /** We're out of memory. */
