@@ -347,7 +347,6 @@ $(insdst): $(top_deps) | $(top_orderdeps)
 		$(insdst)
 	$(top_post_dir_cmds)
 
-.NOTPARALLEL: $(insdst)
 endef # def_install_directory_rule
 $(eval-opt-var def_install_directory_rule)
 
