@@ -91,5 +91,11 @@ tstNtFts_SOURCES = nt/tstNtFts.c nt/fts-nt.c
 tstNtFts_LIBS = $(LIB_KUTIL)
 tstNtFts_NOINST = 1
 
+PROGRAMS.win += tstkFsCache
+tstkFsCache_TEMPLATE = BIN
+tstkFsCache_SOURCES = nt/tstkFsCache.c
+tstkFsCache_LIBS = $(LIB_KUTIL)
+tstkFsCache_NOINST = 1
+
 include $(FILE_KBUILD_SUB_FOOTER)
 
