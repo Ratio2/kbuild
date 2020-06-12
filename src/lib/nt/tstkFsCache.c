@@ -137,6 +137,7 @@ static void test1(const char *pszWorkDir)
 
     /*
      * Try emulate the temp issue above.  Seem to require several files.
+     * (The problem was related to long/short filename updating.)
      */
     szPath[cchWorkDir++] = '\\';
     sprintf(&szPath[cchWorkDir], "longfilename1.txt");
@@ -164,7 +165,6 @@ static void test1(const char *pszWorkDir)
     CHECK((pFsObj = kFsCacheLookupA(pCache, szPath, &enmLookupError)) != NULL);
     CHECK(pFsObj && pFsObj->bObjType == KFSOBJ_TYPE_MISSING);
 
-Sleep(100);
     sprintf(&szPath[cchWorkDir], "longfilename3.txt");
     CHECK(myCreateFile(szPath) == 0);
     sprintf(&szPath[cchWorkDir], "longfilename6.txt");

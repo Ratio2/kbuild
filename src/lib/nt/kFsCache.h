@@ -274,6 +274,8 @@ typedef struct KFSDIR
      * @remarks May differ from st_mtim because it will be updated when the
      *          parent directory is refreshed. */
     KI64                iLastWrite;
+    /** The time that iLastWrite was read. */
+    KI64                iLastPopulated;
 
     /** Set if populated. */
     KBOOL               fPopulated;
