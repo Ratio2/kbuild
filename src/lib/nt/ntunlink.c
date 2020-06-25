@@ -38,12 +38,12 @@
 #include "nthlp.h"
 
 
-static MY_NTSTATUS birdMakeWritable(MY_UNICODE_STRING *pNtPath)
+static MY_NTSTATUS birdMakeWritable(HANDLE hRoot, MY_UNICODE_STRING *pNtPath)
 {
     MY_NTSTATUS rcNt;
     HANDLE      hFile;
 
-    rcNt = birdOpenFileUniStr(NULL /*hRoot*/,
+    rcNt = birdOpenFileUniStr(hRoot,
                               pNtPath,
                               FILE_WRITE_ATTRIBUTES | FILE_READ_ATTRIBUTES | SYNCHRONIZE,
                               FILE_ATTRIBUTE_NORMAL,
@@ -114,7 +114,7 @@ static int birdUnlinkInternal(HANDLE hRoot, const char *pszFile, const wchar_t *
             /* In case some file system does things differently than NTFS. */
             if (rcNt == STATUS_CANNOT_DELETE)
             {
-                birdMakeWritable(&NtPath);
+                birdMakeWritable(hRoot, &NtPath);
                 rcNt = g_pfnNtDeleteFile(&ObjAttr);
             }
         }
@@ -152,7 +152,7 @@ static int birdUnlinkInternal(HANDLE hRoot, const char *pszFile, const wchar_t *
                     break;
 
                 fMayTryAgain = 0;
-                birdMakeWritable(&NtPath);
+                birdMakeWritable(hRoot, &NtPath);
             }
         }
 
