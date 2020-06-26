@@ -401,14 +401,13 @@ int kmk_builtin_command_parsed(int argc, char **argv, struct child *pChild, char
 #endif
                 {
                     /*
-                     * Call the worker function, making sure to preserve umask.
+                     * Call the worker function.
                      */
 #ifdef CONFIG_WITH_KMK_BUILTIN_STATS
                     big_int nsStart = print_stats_flag ? nano_timestamp() : 0;
 #endif
                     KMKBUILTINCTX Ctx;
-                    int const iUmask = umask(0);        /* save umask */
-                    umask(iUmask);
+                    assert(g_fUMask == umask(g_fUMask));
 
                     Ctx.pszProgName = pEntry->uName.s.sz;
                     Ctx.pOut = pChild ? &pChild->output : NULL;
@@ -447,7 +446,7 @@ int kmk_builtin_command_parsed(int argc, char **argv, struct child *pChild, char
                     else
                         rc = 99;
 
-                    umask(iUmask);                      /* restore it */
+                    assert(g_fUMask == umask(g_fUMask)); /* builtin command must preserve umask! */
 
 #ifdef CONFIG_WITH_KMK_BUILTIN_STATS
                     if (print_stats_flag)
