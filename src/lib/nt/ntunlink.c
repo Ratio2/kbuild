@@ -60,9 +60,10 @@ static MY_NTSTATUS birdMakeWritable(HANDLE hRoot, MY_UNICODE_STRING *pNtPath)
 
         Ios.Information = -1;
         Ios.u.Status    = -1;
+        memset(&BasicInfo, 0, sizeof(BasicInfo));
         rcNt = g_pfnNtQueryInformationFile(hFile, &Ios, &BasicInfo, sizeof(BasicInfo), MyFileBasicInformation);
 
-        if (MY_NT_SUCCESS(rcNt) && MY_NT_SUCCESS(Ios.u.Status))
+        if (MY_NT_SUCCESS(rcNt) && MY_NT_SUCCESS(Ios.u.Status) /*&& BasicInfo.FileAttributes != FILE_ATTRIBUTE_READONLY*/)
             dwAttr = BasicInfo.FileAttributes & ~FILE_ATTRIBUTE_READONLY;
         else
             dwAttr = FILE_ATTRIBUTE_NORMAL;
