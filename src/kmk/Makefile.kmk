@@ -77,7 +77,8 @@ endif
 # GCC sanitizers.
 ifdef GCC_SANITIZERS
  TEMPLATE_BIN-KMK_CFLAGS  ?= $(TEMPLATE_BIN-THREADED_CFLAGS)
- TEMPLATE_BIN-KMK_CFLAGS  += -fsanitize=address -fsanitize=undefined -static-libubsan -D GCC_ADDRESS_SANITIZER
+# TEMPLATE_BIN-KMK_CFLAGS  += -fsanitize=address -fsanitize=undefined -static-libubsan -D GCC_ADDRESS_SANITIZER
+ TEMPLATE_BIN-KMK_CFLAGS  += -fsanitize=address -fsanitize=undefined -D GCC_ADDRESS_SANITIZER
  TEMPLATE_BIN-KMK_LDFLAGS ?= $(TEMPLATE_BIN-THREADED_LDFLAGS)
  TEMPLATE_BIN-KMK_LDFLAGS += -fsanitize=address -fsanitize=undefined
 endif
