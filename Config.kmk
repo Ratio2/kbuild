@@ -421,6 +421,14 @@ TEMPLATE_LIB-STATIC-THREADED_INST     = lib/
 
 
 #
+# Template for build programs.
+# This currently does not do cross compilation, sorry.
+#
+TEMPLATE_BLD = Build program to be executed during the build but not installed.
+TEMPLATE_BLD_EXTENDS = BIN
+
+
+#
 # Library macros.
 #
 LIB_KDEP  = $(PATH_OBJ)/kDep/$(TOOL_$(TEMPLATE_LIB_TOOL)_ARLIBPREF)kDep$(TOOL_$(TEMPLATE_LIB_TOOL)_ARLIBSUFF)

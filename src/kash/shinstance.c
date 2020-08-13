@@ -43,9 +43,6 @@
 # include <Windows.h>
 extern pid_t shfork_do(shinstance *psh); /* shforkA-win.asm */
 #endif
-#if !defined(HAVE_SYS_SIGNAME) && defined(DEBUG)
-extern void init_sys_signame(void);
-#endif
 
 
 /*******************************************************************************
@@ -590,9 +587,6 @@ int sh_sigaction(shinstance *psh, int signo, const struct shsigaction *newp, str
             g_sig_state[signo].sa.sa_handler = SIG_DFL;
         g_sig_state[signo].sa.sa_flags = psh->sigactions[signo].sh_flags & SA_RESTART;
 
-#if !defined(HAVE_SYS_SIGNAME) && defined(DEBUG)
-        init_sys_signame();
-#endif
         TRACE2((psh, "sh_sigaction: setting signo=%d:%s to {.sa_handler=%p, .sa_flags=%#x}\n",
                 signo, sys_signame[signo], g_sig_state[signo].sa.sa_handler, g_sig_state[signo].sa.sa_flags));
 #ifdef _MSC_VER

@@ -383,7 +383,7 @@ const char *sh_gethomedir(shinstance *, const char *);
 const char *strsignal(int iSig);
 #endif /* _MSC_VER */
 #ifndef HAVE_SYS_SIGNAME
-extern char sys_signame[NSIG][16];
+extern const char * const sys_signame[NSIG];
 #endif
 
 int sh_sigaction(shinstance *, int, const struct shsigaction *, struct shsigaction *);
