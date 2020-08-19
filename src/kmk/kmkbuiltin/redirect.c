@@ -1033,7 +1033,7 @@ static int kRedirectCreateProcessWindows(PKMKBUILTINCTX pCtx, const char *pszExe
 
                     /* Duplicate the write end of any stdin pipe handles into the child. */
                     for (i = 0; i < cOrders; i++)
-                        if (paOrders[cOrders].fdOtherPipeEnd >= 0)
+                        if (paOrders[i].fdOtherPipeEnd >= 0)
                         {
                             HANDLE hIgnored = INVALID_HANDLE_VALUE;
                             HANDLE hPipeW   = (HANDLE)_get_osfhandle(paOrders[i].fdOtherPipeEnd);
