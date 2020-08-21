@@ -33,7 +33,7 @@
 
 # include the header to get the right MAKE and to include config.kmk
 # files since these may contain global goals.
-include $(PATH_KBUILD)/header.kmk
+include $(KBUILD_PATH)/header.kmk
 
 UP_TO ?= ..
 
