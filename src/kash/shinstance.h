@@ -179,7 +179,7 @@ struct shinstance
     int                 loopnest;       /**< current loop nesting level */
 
     /* eval.c */
-    int                 vforked;
+    int                 vforked; /** @todo remove this */
 
     /* expand.c */
     char               *expdest;        /**< output of current string */
