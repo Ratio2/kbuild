@@ -178,9 +178,6 @@ struct shinstance
     int                 skipcount;      /**< number of levels to skip */
     int                 loopnest;       /**< current loop nesting level */
 
-    /* eval.c */
-    int                 vforked; /** @todo remove this */
-
     /* expand.c */
     char               *expdest;        /**< output of current string */
     struct nodelist    *argbackq;       /**< list of back quote expressions */
