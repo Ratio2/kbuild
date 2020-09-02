@@ -44,8 +44,9 @@ KASH_TESTCASES := $(addprefix $(KASH_TEST_DIR)/,\
 	redirect-3 \
 	pipe-1 \
 	pipe-2 \
-	exec-1 \
 	)
+
+#	exec-1  - lost
 
 
 kash_tests::
