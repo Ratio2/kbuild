@@ -240,7 +240,7 @@ shinstance *sh_create_root_shell(shinstance *inherit, int argc, char **argv, cha
     psh = sh_calloc(NULL, sizeof(*psh), 1);
     if (psh)
     {
-        /* Init it enought for sh_destroy() to not get upset */
+        /* Init it enough for sh_destroy() to not get upset */
           /* ... */
 
         /* Call the basic initializers. */
