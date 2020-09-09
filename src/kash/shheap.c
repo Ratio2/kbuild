@@ -34,7 +34,7 @@
 #include <assert.h>
 #include "shinstance.h"
 
-#if K_OS == K_OS_WINDOWS
+#if K_OS == K_OS_WINDOWS && defined(SH_FORKED_MODE)
 # define SHHEAP_IN_USE
 #endif
 
