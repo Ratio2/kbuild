@@ -130,6 +130,7 @@ typedef struct shfdtab
 } shfdtab;
 
 int shfile_init(shfdtab *, shfdtab *);
+void shfile_uninit(shfdtab *);
 void shfile_fork_win(shfdtab *pfdtab, int set, intptr_t *hndls);
 void *shfile_exec_win(shfdtab *pfdtab, int prepare, unsigned short *sizep, intptr_t *hndls);
 int shfile_exec_unix(shfdtab *pfdtab);

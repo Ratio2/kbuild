@@ -32,6 +32,8 @@
 typedef struct shmtx
 {
     char b[64];
+    KU64 au64[64/sizeof(KU64)];
+    void *aptrs[64/sizeof(void *)];
 } shmtx;
 
 typedef struct shmtxtmp { int i; } shmtxtmp;
