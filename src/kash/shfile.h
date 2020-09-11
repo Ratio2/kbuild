@@ -133,7 +133,16 @@ typedef struct shfdtab
 int shfile_init(shfdtab *, shfdtab *);
 void shfile_uninit(shfdtab *);
 void shfile_fork_win(shfdtab *pfdtab, int set, intptr_t *hndls);
-void *shfile_exec_win(shfdtab *pfdtab, int prepare, unsigned short *sizep, intptr_t *hndls);
+typedef struct shfdexecwin
+{
+    int inherithandles;
+    int startsuspended;
+    shmtxtmp tmp;
+    int replacehandles[3];
+    intptr_t handles[3];
+    void *strtinfo;
+} shfdexecwin;
+int shfile_exec_win(shfdtab *pfdtab, int prepare, shfdexecwin *info);
 int shfile_exec_unix(shfdtab *pfdtab);
 
 int shfile_open(shfdtab *, const char *, unsigned, mode_t);

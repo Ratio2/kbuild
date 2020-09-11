@@ -59,6 +59,8 @@
 # define strncasecmp strnicmp
 #endif
 
+extern shmtx g_sh_exec_inherit_mtx;
+
 /**
  * A child process.
  */
