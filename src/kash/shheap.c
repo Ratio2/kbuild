@@ -383,10 +383,15 @@ static void shheap_unlink_free(shmemhdr *mem)
 void sh_free(shinstance *psh, void *ptr)
 {
 #ifdef SHHEAP_IN_USE
-    shmemhdr *mem = (shmemhdr *)ptr - 1;
+    shmemhdr *mem;
     shmemhdr *right;
     shmemhdr *left;
     shmtxtmp tmp;
+
+    if (ptr)
+        mem = (shmemhdr *)ptr - 1;
+    else
+        return;
 
     if (mem->magic != SHMEMHDR_MAGIC_USED)
     {

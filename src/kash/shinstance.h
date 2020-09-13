@@ -59,7 +59,9 @@
 # define strncasecmp strnicmp
 #endif
 
+#ifndef SH_FORKED_MODE
 extern shmtx g_sh_exec_inherit_mtx;
+#endif
 
 /**
  * A child process.

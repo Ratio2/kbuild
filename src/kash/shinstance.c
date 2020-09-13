@@ -277,9 +277,11 @@ static void sh_destroy(shinstance *psh)
     shfile_uninit(&psh->fdtab);
     sh_free_string_vector(psh, &psh->shenviron);
 
+#ifndef SH_FORKED_MODE
     /** @todo children. */
     sh_free(psh, psh->threadarg);
     psh->threadarg = NULL;
+#endif
 
     /* alias.c */
     left = psh->aliases;
