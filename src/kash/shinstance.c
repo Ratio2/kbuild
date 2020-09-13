@@ -436,7 +436,10 @@ static void sh_destroy(shinstance *psh)
     /* redir.c */
     struct redirtab    *redirlist;
     int                 fd0_redirected/* = 0*/;
+#endif
+    psh->expfnames = NULL; /* stack alloc */
 
+#if 0
     /* show.c */
     char                tracebuf[1024];
     size_t              tracepos;
