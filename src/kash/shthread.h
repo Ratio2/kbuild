@@ -57,5 +57,24 @@ void shmtx_delete(shmtx *pmtx);
 void shmtx_enter(shmtx *pmtx, shmtxtmp *ptmp);
 void shmtx_leave(shmtx *pmtx, shmtxtmp *ptmp);
 
+
+K_INLINE unsigned sh_atomic_inc(KU32 volatile *valuep)
+{
+#ifdef _MSC_VER
+    return _InterlockedIncrement((long *)valuep);
+#else
+    return __sync_fetch_and_add(valuep, 1);
+#endif
+}
+
+K_INLINE unsigned sh_atomic_dec(unsigned volatile *valuep)
+{
+#ifdef _MSC_VER
+    return _InterlockedDecrement((long *)valuep);
+#else
+    return __sync_fetch_and_sub(valuep, 1);
+#endif
+}
+
 #endif
 
