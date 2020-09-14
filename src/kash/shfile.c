@@ -1442,9 +1442,9 @@ int shfile_movefd(shfdtab *pfdtab, int fdfrom, int fdto)
     if (file)
     {
         /* prepare the new entry */
-        if (fdto >= (int)pfdtab->size)
+        if ((unsigned)fdto >= pfdtab->size)
             shfile_grow_tab_locked(pfdtab, fdto);
-        if (fdto < (int)pfdtab->size)
+        if ((unsigned)fdto < pfdtab->size)
         {
             if (pfdtab->tab[fdto].fd != -1)
                 shfile_native_close(pfdtab->tab[fdto].native, pfdtab->tab[fdto].oflags);
