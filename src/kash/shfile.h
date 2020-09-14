@@ -131,7 +131,7 @@ typedef struct shfdtab
 } shfdtab;
 
 int shfile_init(shfdtab *, shfdtab *);
-void shfile_uninit(shfdtab *);
+void shfile_uninit(shfdtab *, int);
 void shfile_fork_win(shfdtab *pfdtab, int set, intptr_t *hndls);
 typedef struct shfdexecwin
 {
