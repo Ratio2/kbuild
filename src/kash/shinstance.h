@@ -168,7 +168,12 @@ struct ifsregion {
 	int inquotes;		/* search for nul bytes only */
 };
 
-/* redir.c / bird */
+/* redir.c */
+struct redirtab {
+	struct redirtab *next;
+	short renamed[10];
+};
+
 /**
  * This is a replacement for temporary node field nfile.expfname.
  * Uses stack allocator, created by expredir(), duplicated by
@@ -244,11 +249,11 @@ struct shinstance
     int                 commandnamemalloc; /**< Set if commandname is malloc'ed (only subshells). */
 
     /* expand.c */
-    char               *expdest;        /**< output of current string */
+    char               *expdest;        /**< output of current string (stack) */
     struct nodelist    *argbackq;       /**< list of back quote expressions */
     struct ifsregion    ifsfirst;       /**< first struct in list of ifs regions */
     struct ifsregion   *ifslastp;       /**< last struct in list */
-    struct arglist      exparg;         /**< holds expanded arg list */
+    struct arglist      exparg;         /**< holds expanded arg list (stack) */
     char               *expdir;         /**< Used by expandmeta. */
 
     /* exec.h */
