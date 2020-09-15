@@ -105,6 +105,12 @@ typedef struct shfile
     unsigned            oflags;         /**< Open flags. */
     unsigned            shflags;        /**< The shell file descriptor flags. */
     intptr_t            native;         /**< The native file descriptor number. */
+#ifdef DEBUG
+    char               *dbgname;        /**< The name of the file, if applicable, debug builds only. */
+#  define SHFILE_DBGNAME(a) a
+# else
+#  define SHFILE_DBGNAME(a) NULL
+#endif
 } shfile;
 
 /** @name shfile::shflags values.
