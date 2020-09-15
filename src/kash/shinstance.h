@@ -130,7 +130,8 @@ typedef struct pstack_block {
     /** @} */
     /** Reference counter. */
     unsigned volatile   refs;
-    unsigned            padding;
+    /** Whether to make it current when is restored to the top of the stack. */
+    KBOOL               done;
     /** The first stack block. */
     struct stack_block  first;
 } pstack_block;
@@ -338,6 +339,7 @@ struct shinstance
     pstack_block      **pstack;         /**< Stack of parsed stuff. */
     unsigned            pstacksize;     /**< Number of entries in pstack. */
     unsigned            pstackalloced;  /**< The allocated size of pstack. */
+    pstack_block       *freepstack;     /**< One cached pstack entry (lots of parsecmd calls). */
 #endif
 
     /* myhistedit.h */

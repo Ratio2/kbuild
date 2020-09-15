@@ -540,9 +540,10 @@ static void sh_destroy(shinstance *psh)
         sh_free(psh, psh->pstack);
         psh->pstack = NULL;
     }
+    sh_free(psh, psh->freepstack);
+    psh->freepstack = NULL;
 #endif
     psh->markp = NULL;
-
 
     /*
      * Finally get rid of tracefd and then free the shell:
