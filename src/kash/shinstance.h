@@ -443,7 +443,7 @@ struct shinstance
     struct t_op const  *t_wp_op;
 };
 
-
+extern void sh_init_globals(void);
 extern shinstance *sh_create_root_shell(char **, char **);
 extern shinstance *sh_create_child_shell(shinstance *);
 
