@@ -94,6 +94,9 @@
 # define O_NONBLOCK 0 /** @todo */
 
 #endif
+#if K_OS == K_OS_WINDOWS
+# include "nt/ntstat.h"
+#endif
 
 
 /**
