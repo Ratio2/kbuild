@@ -527,7 +527,7 @@ static void sh_destroy(shinstance *psh)
             do
             {
                 struct var *next = var->next;
-                if (!(var->flags & VTEXTFIXED))
+                if (!(var->flags & (VTEXTFIXED | VSTACK)))
                     sh_free(psh, var->text);
                 if (!(var->flags & VSTRFIXED))
                     sh_free(psh, var);
