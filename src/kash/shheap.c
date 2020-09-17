@@ -31,7 +31,6 @@
 #include "shheap.h"
 #include <string.h>
 #include <stdlib.h>
-#include <assert.h>
 #include "shinstance.h"
 
 #if K_OS == K_OS_WINDOWS && defined(SH_FORKED_MODE)
@@ -104,7 +103,7 @@ typedef struct shmemchunk
 #else
 # define SHHEAP_CHECK()         shheap_check()
 # define SHHEAP_CHECK_2()       shheap_check()
-# define SHHEAP_ASSERT(expr)    assert(expr)
+# define SHHEAP_ASSERT(expr)    kHlpAssert(expr)
 # define SHHEAP_POISON_PSH(p,v) ((shinstance *)(v))
 # define SHHEAP_POISON_NULL(v)  ((void *)(v))
 #endif

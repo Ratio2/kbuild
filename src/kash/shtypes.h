@@ -29,6 +29,7 @@
 #define ___shtypes_h___
 
 #include "k/kTypes.h" /* Use these, not the ones below. */
+#include "k/kHlpAssert.h"
 
 #include <sys/types.h>
 #include <stdlib.h>
