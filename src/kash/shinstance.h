@@ -78,6 +78,8 @@ typedef struct shsubshellstatus
 # endif
     struct shsubshellstatus *next;      /**< Next free one on the free chain. */
 } shsubshellstatus;
+#else
+struct shsubshellstatus;
 #endif
 
 /**
