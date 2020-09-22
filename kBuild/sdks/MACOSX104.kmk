@@ -44,9 +44,9 @@ endif
 # General Properties (used by kBuild)
 # Note: The MAC_OS_X_VERSION_MAX_ALLOWED is left free for the SDK user to define.
 SDK_MACOSX104_DEFS        ?= MAC_OS_X_VERSION_MIN_REQUIRED=1040
-SDK_MACOSX104_CFLAGS      ?= -mmacosx-version-min=10.4 -isysroot $(PATH_SDK_MACOSX104)
-SDK_MACOSX104_CXXFLAGS    ?= -mmacosx-version-min=10.4 -isysroot $(PATH_SDK_MACOSX104)
-SDK_MACOSX104_OBJCFLAGS   ?= -mmacosx-version-min=10.4 -isysroot $(PATH_SDK_MACOSX104)
-SDK_MACOSX104_OBJCXXFLAGS ?= -mmacosx-version-min=10.4 -isysroot $(PATH_SDK_MACOSX104)
-SDK_MACOSX104_LDFLAGS     ?= -mmacosx-version-min=10.4 -Wl,-syslibroot,$(PATH_SDK_MACOSX104)
+SDK_MACOSX104_CFLAGS      ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
+SDK_MACOSX104_CXXFLAGS    ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
+SDK_MACOSX104_OBJCFLAGS   ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
+SDK_MACOSX104_OBJCXXFLAGS ?= -mmacosx-version-min=10.4 -isysroot "$(PATH_SDK_MACOSX104)"
+SDK_MACOSX104_LDFLAGS     ?= -mmacosx-version-min=10.4 -Wl,-syslibroot,"$(PATH_SDK_MACOSX104)"
 
