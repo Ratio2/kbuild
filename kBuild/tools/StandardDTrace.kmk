@@ -49,6 +49,6 @@ define TOOL_StandardDTrace_DTRACE_OBJ_CMDS
 		$(if-expr $(intersects $(bld_trg_arch),$(KBUILD_ARCHES_64)),-64,-32) \
 		$(flags) \
 		-o "$(out)" -s "$(source)" \
-		$$(filter-out %-dtrace-object-format.o $$($(target)_1_GCC_PCH_FILE), $$($(target)_2_OBJS))
+		$$(filter-out %-dtrace-object-format.o %.h.gch, $$($(target)_2_OBJS))
 endef
 
