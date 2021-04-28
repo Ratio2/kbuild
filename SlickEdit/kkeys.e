@@ -156,17 +156,12 @@ _command kkeys_delete_right()
    ch = get_text();
    if (ch != ' ' && ch != "\t" && ch != "\r" && ch != "\n")
    {
-      /* Delete word and any trailing spaces, but stop at new line. */
-      delete_word();
-
-      ch = get_text();
-      if (ch == ' ' || ch == "\t" || ch == "\r" || ch == "\n")
+      /* Delete word and any trailing spaces, but stop at new line.
+         (Don't use delete_word here!) */
+      if (search('(:v|?)[ \t]@','r+') == 0)
       {
-         if (search('[ \t]#','r+') == 0)
-         {
-            _nrseek(match_length('s'));
-            _delete_text(match_length());
-         }
+         _nrseek(match_length('s'));
+         _delete_text(match_length());
       }
    }
    else
