@@ -158,7 +158,7 @@ _command kkeys_delete_right()
    {
       /* Delete word and any trailing spaces, but stop at new line.
          (Don't use delete_word here!) */
-      if (search('(:v|?)[ \t]@','r+') == 0)
+      if (search('([[:alnum:]_]#|?)[ \t]@','r+') == 0)
       {
          _nrseek(match_length('s'));
          _delete_text(match_length());
