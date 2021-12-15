@@ -220,6 +220,7 @@ static KU64 shfile_nano_ts(void)
 static unsigned __stdcall shfile_async_close_handle_thread(void *ignored)
 {
     KBOOL decrement_pending = K_FALSE;
+    shthread_set_name("Async CloseHandle");
     while (!g_shfile_async_close.terminate_threads)
     {
         HANDLE toclose;
