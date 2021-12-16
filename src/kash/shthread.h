@@ -63,7 +63,7 @@ K_INLINE unsigned sh_atomic_inc(KU32 volatile *valuep)
 {
 #ifdef _MSC_VER
     return _InterlockedIncrement((long *)valuep);
-#elif defined(__GNUC__) && (K_ARCH == K_ARCH_AMD64 || K_ARCH == K_ARCH_X86)
+#elif defined(__GNUC__) && (K_ARCH == K_ARCH_AMD64 || K_ARCH == K_ARCH_X86_32)
     unsigned uRet;
     __asm__ __volatile__("lock; xaddl %1, %0" : "=m" (*valuep), "=r" (uRet) : "m" (*valuep), "1" (1) : "memory", "cc");
     return uRet + 1;
@@ -76,7 +76,7 @@ K_INLINE unsigned sh_atomic_dec(unsigned volatile *valuep)
 {
 #ifdef _MSC_VER
     return _InterlockedDecrement((long *)valuep);
-#elif defined(__GNUC__) && (K_ARCH == K_ARCH_AMD64 || K_ARCH == K_ARCH_X86)
+#elif defined(__GNUC__) && (K_ARCH == K_ARCH_AMD64 || K_ARCH == K_ARCH_X86_32)
     unsigned uRet;
     __asm__ __volatile__("lock; xaddl %1, %0" : "=m" (*valuep), "=r" (uRet) : "m" (*valuep), "1" (-1) : "memory", "cc");
     return uRet - 1;
