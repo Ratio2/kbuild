@@ -80,18 +80,18 @@ TOOL_NASM_COMPILE_AS_DEPORD =
 define TOOL_NASM_COMPILE_AS_CMDS
 ifdef TOOL_NASM_KSUBMIT
 	$(QUIET)$(call TOOL_NASM_KSUBMIT, -C $(PATH_OUT_BASE)) $(TOOL_NASM_AS)\
-		$(flags) $(addsuffix /,$(addprefix -i, $(incs))) $(addprefix -D, $(defs))\
+		$(flags) $(qaddsuffix sh,/,$(qaddprefix ,-i, $(incs))) $(qaddprefix sh,-D, $(defs))\
 		-l $(outbase).lst\
 		-o $(obj)\
 		-MD "$(dep)" -MP\
-		$(abspath $(source))
+		$(qabspath sh,$(source))
 else
 	$(QUIET)$(REDIRECT) -C $(PATH_OUT_BASE) -- $(TOOL_NASM_AS)\
-		$(flags) $(addsuffix /,$(addprefix -i, $(incs))) $(addprefix -D, $(defs))\
+		$(flags) $(qaddsuffix sh,/,$(qaddprefix ,-i, $(incs))) $(qaddprefix sh,-D, $(defs))\
 		-l $(outbase).lst\
 		-o $(obj)\
 		-MD "$(dep)" -MP\
-		$(abspath $(source))
+		$(qabspath sh,$(source))
 endif
 endef
 
