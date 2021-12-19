@@ -13486,6 +13486,10 @@ static void kwSetProcessorGroup(unsigned long uGroup)
 
 int main(int argc, char **argv)
 {
+#if defined(KBUILD_OS_WINDOWS) && defined(KBUILD_ARCH_X86)
+    PVOID                           pvVecXcptHandler = AddVectoredExceptionHandler(0 /*called last*/,
+                                                                                   kwSandboxVecXcptEmulateChained);
+#endif
     KSIZE                           cbMsgBuf = 0;
     KU8                            *pbMsgBuf = NULL;
     int                             i;
@@ -13493,16 +13497,14 @@ int main(int argc, char **argv)
     const char                     *pszTmp;
     KFSLOOKUPERROR                  enmIgnored;
     DWORD                           dwType;
-#if defined(KBUILD_OS_WINDOWS) && defined(KBUILD_ARCH_X86)
-    PVOID                           pvVecXcptHandler = AddVectoredExceptionHandler(0 /*called last*/,
-                                                                                   kwSandboxVecXcptEmulateChained);
-#endif
 #ifdef WITH_CONSOLE_OUTPUT_BUFFERING
     HANDLE                          hCurProc       = GetCurrentProcess();
     PPEB                            pPeb           = kwSandboxGetProcessEnvironmentBlock();
     PMY_RTL_USER_PROCESS_PARAMETERS pProcessParams = (PMY_RTL_USER_PROCESS_PARAMETERS)pPeb->ProcessParameters;
 #endif
-
+#if defined(KBUILD_OS_WINDOWS) && defined(KBUILD_ARCH_X86)
+    K_NOREF(pvVecXcptHandler);
+#endif
 
 #ifdef WITH_FIXED_VIRTUAL_ALLOCS
     /*
