@@ -143,6 +143,8 @@ kmk_grep_SOURCES.win = \
 	lib/xbinary-io.c \
        lib/strerror.c \
        \
+	../lib/maybe_con_fwrite.c \
+	../lib/is_console.c \
 	../lib/nt/ntstat.c \
 	../lib/nt/ntdir.c \
 	../lib/nt/nthlpcore.c \
