@@ -118,7 +118,7 @@ void birdResolveImportsWorker(void)
                 || !WriteFile(GetStdHandle(STD_ERROR_HANDLE), pszSym, (DWORD)strlen(pszSym), &cbWritten, NULL)
                 || !WriteFile(GetStdHandle(STD_ERROR_HANDLE), "\r\n", sizeof("\r\n") - 1, &cbWritten, NULL)
                 )
-                *(void **)i = NULL;
+                *(void **)(size_t)i = NULL;
             ExitProcess(127);
         }
     }
