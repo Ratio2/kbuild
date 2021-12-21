@@ -38,6 +38,9 @@ ifeq ($(KBUILD_TARGET),win)
  include $(PATH_SUB_CURRENT)/kDeDup/Makefile.kmk
  include $(PATH_SUB_CURRENT)/kWorker/Makefile.kmk
 endif
+if1of ($(KBUILD_TARGET), win)
+ include $(PATH_SUB_CURRENT)/grep/Makefile.kmk
+endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
