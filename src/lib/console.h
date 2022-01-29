@@ -40,6 +40,9 @@ typedef intptr_t ssize_t;
 #else
 # include <unistd.h>
 #endif
+#ifdef KBUILD_OS_WINDOWS
+# include "get_codepage.h"
+#endif
 
 
 #ifdef KBUILD_OS_WINDOWS
@@ -48,6 +51,5 @@ extern int      is_console_handle(intptr_t hHandle);
 extern int      is_console(int fd);
 extern ssize_t  maybe_con_write(int fd, void const *pvBuf, size_t cbToWrite);
 extern size_t   maybe_con_fwrite(void const *pvBuf, size_t cbUnit, size_t cUnits, FILE *pFile);
-
 #endif
 
