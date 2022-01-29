@@ -115,9 +115,9 @@ static int compare_failed(char ch1, char ch2)
         return -1;
     if (ch2 == '~')
         return 1;
-    if (ch1 == '\0')
+    if (ch1 == '\0' || ch1 == '/') /* treat '/' similar to '\0' to deal with the v14.2/ vs v14.2.11.9/ case.  */
         return -1;
-    if (ch2 == '\0')
+    if (ch2 == '\0' || ch2 == '/')
         return 1;
     if (isdigit(ch1))
         return -1;
@@ -250,6 +250,10 @@ int main()
         { +1, "kBuild-0.099", "kBuild-0.99~" },
         { +1, "1.2.3r4567890", "1.2.3rc1" },
         { +1, "1.2.3r4567890", "1.2.3RC1" },
+        { -1, "/tools/win.amd64/vcc/v14.2/Tools", "/tools/win.amd64/vcc/v14.2.11.9/Tools" },
+        { -1, "/tools/win.amd64/vcc/v14.2/Tools", "/tools/win.amd64/vcc/v14.211.9/Tools" },
+        { -1, "/tools/win.amd64/vcc/v14.2/Tools", "/tools/win.amd64/vcc/v14.2r2/Tools" },
+        { -1, "/tools/win.amd64/vcc/v14.2/Tools", "/tools/win.amd64/vcc/v14.2-r2/Tools" },
     };
     unsigned cErrors = 0;
     unsigned i;
