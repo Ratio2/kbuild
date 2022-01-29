@@ -318,11 +318,11 @@ static EXPRRET expr_string_to_num(PEXPR pThis, EXPRINT64 *piDst, const char *psz
         psz++;
 
     /*
-     * Determin base                                                        .
-     *                                                                      .
+     * Determin base.
+     *
      * Recognize some exsotic prefixes here in addition to the two standard ones.
      */
-    if (*psz != '0' || psz[1] == '\0' || ISBLANK(psz[1]))
+    if (*psz != '0')
         uBase = 10;
     else if (psz[1] == 'x' || psz[1] == 'X')
     {
@@ -1906,7 +1906,7 @@ static void expr_map_init(void)
  */
 static unsigned char expr_map_get(char ch)
 {
-    return g_auchOpStartCharMap[(unsigned int)ch];
+    return g_auchOpStartCharMap[(unsigned char)ch];
 }
 
 
