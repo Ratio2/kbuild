@@ -85,6 +85,7 @@ kWorkerLib_SOURCES.win = \
        nt/kFsCache.c \
        win_get_processor_group_active_mask.c \
        quote_argv.c \
+	get_codepage.c \
 	is_console.c \
 	maybe_con_write.c \
 	maybe_con_fwrite.c \
