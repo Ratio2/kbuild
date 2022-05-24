@@ -1403,8 +1403,8 @@ incdep_unescape_and_cache_filename(struct incdep *curdep, char *start, const cha
               size_t slashes = 1;
               while (ch2 == '\\')
                 {
-                  ch2 = *src++;
                   slashes++;
+                  ch2 = *src++;
                 }
 
               /* Is it escapable? */
@@ -1536,10 +1536,9 @@ incdep_unescape_and_cache_filename(struct incdep *curdep, char *start, const cha
               /* Just output the slash if non-escapable character: */
               else
                 {
-                  src--;
                   while (slashes-- > 0)
                     *dst++ = '\\';
-                  *dst++ = ch;
+                  src--;
                 }
             }
         }
