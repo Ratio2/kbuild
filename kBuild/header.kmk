@@ -1713,7 +1713,7 @@ endif
 
 ##
 # An internal define used by subheader.kmk, subfooter.kmk, and
-# KB_FN_PASS_0_ON_TARGET.
+# KB_FN_DO_PASS0_ON_TARGET.
 #
 # @param target    The target to process.
 #
