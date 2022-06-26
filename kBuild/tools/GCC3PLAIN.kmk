@@ -66,10 +66,6 @@ ifndef TOOL_GCC3PLAIN_LD_SONAME.$(KBUILD_TARGET)
 else
  TOOL_GCC3PLAIN_LD_SONAME ?= $(TOOL_GCC3PLAIN_LD_SONAME.$(KBUILD_TARGET))
 endif
-ifdef SLKRUNS
- TOOL_GCC3PLAIN_CC  += -fmessage-length=0
- TOOL_GCC3PLAIN_CXX += -fmessage-length=0
-endif
 
 # General Properties used by kBuild
 TOOL_GCC3PLAIN_COBJSUFF         ?= .o

@@ -63,11 +63,6 @@ TOOL_GXX3OMF_LD_SYSMOD_MAP  ?= -Zmap=$(1)
 
 TOOL_GXX3OMF_RC = $(TOOL_GXX3OMF_PREFIX3)rc$(TOOL_GXX3OMF_SUFFIX3)
 
-ifdef SLKRUNS
- TOOL_GXX3OMF_CC  += -fmessage-length=0
- TOOL_GXX3OMF_CXX += -fmessage-length=0
-endif
-
 # General Properties used by kBuild
 TOOL_GXX3OMF_COBJSUFF         ?= .o
 TOOL_GXX3OMF_CFLAGS           ?= -Zomf

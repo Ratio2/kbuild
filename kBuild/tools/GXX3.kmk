@@ -81,12 +81,6 @@ else
 endif
 TOOL_GXX3_OBJCOPY ?= $(TOOL_GXX3_PREFIX)objcopy$(TOOL_GXX3_SUFFIX)
 
-ifdef SLKRUNS
- TOOL_GXX3_CC  += -fmessage-length=0
- TOOL_GXX3_CXX += -fmessage-length=0
- TOOL_GXX3_PCH += -fmessage-length=0
-endif
-
 # General Properties used by kBuild
 TOOL_GXX3_COBJSUFF         ?= .o
 TOOL_GXX3_CFLAGS           ?=

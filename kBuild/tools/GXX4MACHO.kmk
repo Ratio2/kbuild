@@ -61,13 +61,6 @@ TOOL_GXX4MACHO_STRIP_PROGRAM ?= $(TOOL_GXX4MACHO_STRIP) -SXxru
 TOOL_GXX4MACHO_STRIP_DLL     ?= $(TOOL_GXX4MACHO_STRIP) -Sxru
 TOOL_GXX4MACHO_STRIP_SYSMOD  ?= $(TOOL_GXX4MACHO_STRIP) -Sru
 
-ifdef SLKRUNS
-TOOL_GXX4MACHO_CC     += -fmessage-length=0
-TOOL_GXX4MACHO_CXX    += -fmessage-length=0
-TOOL_GXX4MACHO_OBJC   += -fmessage-length=0
-TOOL_GXX4MACHO_OBJCXX += -fmessage-length=0
-endif
-
 # General Properties used by kBuild
 TOOL_GXX4MACHO_COBJSUFF         ?= .o
 TOOL_GXX4MACHO_CFLAGS           ?=

@@ -82,11 +82,6 @@ TOOL_XGCCAMD64LINUX_LD_SYSMOD_MAP ?= -Map $(1) --cref
 TOOL_XGCCAMD64LINUX_LDFLAGS.dll ?= -shared
 TOOL_XGCCAMD64LINUX_LDFLAGS.sysmod ?= -r
 
-ifdef SLKRUNS
-TOOL_XGCCAMD64LINUX_CC  += -fmessage-length=0
-TOOL_XGCCAMD64LINUX_CXX += -fmessage-length=0
-endif
-
 # General Properties used by kBuild
 TOOL_XGCCAMD64LINUX_COBJSUFF         ?= .o
 TOOL_XGCCAMD64LINUX_CFLAGS           ?= -g

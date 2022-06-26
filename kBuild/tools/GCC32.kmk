@@ -79,11 +79,6 @@ TOOL_GCC32_LD_SYSMOD_MAP ?=
 endif
 TOOL_GCC32_OBJCOPY ?= $(TOOL_GCC32_PREFIX2)objcopy$(TOOL_GCC32_SUFFIX2)
 
-ifdef SLKRUNS
- TOOL_GCC32_CC  += -fmessage-length=0
- TOOL_GCC32_CXX += -fmessage-length=0
-endif
-
 # General Properties used by kBuild
 TOOL_GCC32_COBJSUFF         ?= .o
 TOOL_GCC32_CFLAGS           ?=
