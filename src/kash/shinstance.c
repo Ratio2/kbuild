@@ -488,7 +488,7 @@ static void sh_destroy(shinstance *psh)
         do
         {
             struct localvar *next = lvar->next;
-			if (!(lvar->flags & VTEXTFIXED))
+            if (!(lvar->flags & VTEXTFIXED))
                 sh_free(psh, lvar->text);
             sh_free(psh, lvar);
             lvar = next;
@@ -508,7 +508,7 @@ static void sh_destroy(shinstance *psh)
                 struct var *next = var->next;
                 if (!(var->flags & (VTEXTFIXED | VSTACK)))
                     sh_free(psh, var->text);
-                if (!(var->flags & VSTRFIXED))
+                if (!(var->flags & (VSTRFIXED | VSTRFIXED2)))
                     sh_free(psh, var);
                 var = next;
             } while (var);
