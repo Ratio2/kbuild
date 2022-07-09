@@ -428,21 +428,21 @@ static void sh_destroy(shinstance *psh)
 #endif
 
     /* output.h */
-	if (psh->output.buf != NULL)
+    if (psh->output.buf != NULL)
     {
         ckfree(psh, psh->output.buf);
         psh->output.buf = NULL;
-	}
-	if (psh->errout.buf != NULL)
+    }
+    if (psh->errout.buf != NULL)
     {
         ckfree(psh, psh->errout.buf);
         psh->errout.buf = NULL;
-	}
-	if (psh->memout.buf != NULL)
+    }
+    if (psh->memout.buf != NULL)
     {
         ckfree(psh, psh->memout.buf);
         psh->memout.buf = NULL;
-	}
+    }
 
     /* options.h */
     if (psh->arg0malloc)
