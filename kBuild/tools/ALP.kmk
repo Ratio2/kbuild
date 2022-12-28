@@ -73,5 +73,6 @@ define TOOL_ALP_COMPILE_AS_CMDS
 		-Fl:$(outbase).lst\
 		-Fd:$(dep)\
 		-Fo:$(obj)
+	$(QUIET)$(SED_EXT) -i -e 's/\\/\//g' -e 's/\/$$(DOLLAR)/\\/' "$(dep)" 
 endef
 
