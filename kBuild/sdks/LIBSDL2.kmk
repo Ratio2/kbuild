@@ -142,7 +142,7 @@ else # ASSUMES Unix like system
 
  # General Properties used by kBuild
  ifndef SDK_LIBSDL2_INCS
-  ifneq ($(wildcard $(PATH_SDK_LIBSDL2)/include/SDL/),)
+  if exists("$(PATH_SDK_LIBSDL2)/include/SDL2/")
    SDK_LIBSDL2_INCS := $(PATH_SDK_LIBSDL2)/include/SDL2
   else
    SDK_LIBSDL2_INCS := $(PATH_SDK_LIBSDL2)/include
