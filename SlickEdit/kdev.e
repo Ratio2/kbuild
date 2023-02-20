@@ -113,7 +113,7 @@ static _str     skChange        = '';       /* Current change identifier. */
 
 static int      ikStyleWidth    = 130;       /* The page width of the style. */
 static boolean  fkStyleFullHeaders = false; /* false: omit some tags. */
-static int      ikStyleOneliner = 41;       /* The oneline comment column. */
+static int      ikStyleOneliner = 45;       /* The oneline comment column. */
 static int      ikStyleModifyMarkColumn = 105;
 static boolean  fkStyleBoxTag   = false;    /* true: Include tag in k_box_start. */
 
