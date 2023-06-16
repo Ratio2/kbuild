@@ -59,3 +59,7 @@ WINCMN_MAP_ARCH.arm64 := arm64
 WINCMN_MAP_ARCH.ia64  := ia64
 WINCMN_MAP_ARCH.x86   := x86
 ## @}
+
+## @def WINCMN_MT_RETRY
+## Invocation of script for retrying MT.EXE when it clashes with AV software.
+WINCMN_MT_RETRY = $(ASH) $(KBUILD_PATH)/retry-10-delay-500ms.sh
