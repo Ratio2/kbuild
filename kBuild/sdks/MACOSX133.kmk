@@ -50,7 +50,7 @@ endif
 
 ## The MAC_OS_X_VERSION_MIN_REQUIRED and -mmacosx-version-min values for this SDK.
 SDK_MACOSX133_VERSION_ARG   := 13.3
-SDK_MACOSX133_VERSION_VALUE := $(subst .,,$(SDK_MACOSX130_VERSION_VALUE))000
+SDK_MACOSX133_VERSION_VALUE := $(subst .,,$(SDK_MACOSX133_VERSION_ARG))000
 
 # General Properties (used by kBuild)
 # Note: The MAC_OS_X_VERSION_MAX_ALLOWED is left free for the SDK user to define.
