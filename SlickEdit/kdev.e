@@ -73,6 +73,7 @@ def  'C-S-P' = k_mark_modified_line
 def  'C-S-S' = k_box_structs
 def  'C-S-T' = k_rebuild_tagfile
 def  'C-S-L' = k_style_load
+def  'C-S-\' = k_newline_escape_selection
 
 //optional stuff
 //def  'C-S-Q' = klib_klog_file_ask
@@ -1685,6 +1686,42 @@ void k_noref()
     _restore_pos2(org_pos);
     _insert_text(sNoRefs);
 }
+
+/* Adds newline escape slashes to the current selection. */
+void k_newline_escape_selection()
+{
+    filter_init();
+    typeless rc = filter_get_string(sLine);
+    if (rc == 0)
+    {
+        _str sPrev = '';
+        do
+        {
+            /* */
+            if (sLine != '')
+                sLine = sLine ' \';
+            else
+            {
+                int offNonWhitespace = pos("[^ \t]", sPrev, 1, 'L');
+                if (offNonWhitespace > 0)
+                    sLine = _pad(sLine, offNonWhitespace - 1, ' ');
+                sLine = sLine '\';
+            }
+
+            filter_put_string(sLine);
+
+            /* next line */
+            sPrev = sLine;
+            rc = filter_get_string(sLine);
+        } while (rc == 0);
+
+    }
+    else if (isinteger(rc))
+        message(get_message(rc));
+    else
+        message(rc);
+}
+
 
 /*******************************************************************************
 *   kLIB Logging                                                               *
