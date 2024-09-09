@@ -859,6 +859,37 @@ TARGET_BASE = $(PATH_TARGET)/$(2)/$(call no-root-slash,$(call no-drive,$(1)))
 TARGET_PATH = $(PATH_TARGET)/$(1)
 
 ##
+# An internal define used by subheader.kmk, subfooter.kmk, and
+# KB_FN_DO_PASS0_ON_TARGET.
+#
+# @param target    The target to process.
+#
+define def_subfooter_header_target_pass
+ ifndef $(target)_PATH
+  ifndef $(target)_DEFPATH
+   $(target)_DEFPATH := $(PATH_SUB_CURRENT)
+  endif
+  $(call KB_FN_ASSIGN_DEPRECATED,$(target)_PATH,$($(target)_DEFPATH), $(target)_DEFPATH)
+ else ifndef $(target)_DEFPATH
+  $(target)_DEFPATH := $($(target)_PATH)
+ endif
+ ifndef $(target)_MAKEFILE
+  $(target)_MAKEFILE := $(MAKEFILE_CURRENT)
+ endif
+ ifndef $(target)_0_OUTDIR
+  $(target)_0_OUTDIR := $(call TARGET_PATH,$(target))
+  $(call KB_FN_ASSIGN_DEPRECATED,PATH_$(target),$($(target)_0_OUTDIR), $(target)_0_OUTDIR)
+ endif
+endef
+
+##
+# Function to call to set _0_OUTDIR, _DEFPATH, and _MAKEFILE earlier than subfooter.
+# Can be used to avoid exploiting double expansion.
+#
+# @param 1     The target name.
+KB_FN_DO_PASS0_ON_TARGET = $(foreach target,$1,$(if-expr defined($(target)_0_OUTDIR),,$(evalval def_subfooter_header_target_pass)))
+
+##
 # Checks if the specified short option ($1) is found in the flags ($2),
 # assuming getopt style options.
 #
@@ -1709,38 +1740,6 @@ else
   MSG_L2 ?= %@$(ECHO) "kBuild: $1"
  endif
 endif
-
-
-##
-# An internal define used by subheader.kmk, subfooter.kmk, and
-# KB_FN_DO_PASS0_ON_TARGET.
-#
-# @param target    The target to process.
-#
-define def_subfooter_header_target_pass
- ifndef $(target)_PATH
-  ifndef $(target)_DEFPATH
-   $(target)_DEFPATH := $(PATH_SUB_CURRENT)
-  endif
-  $(call KB_FN_ASSIGN_DEPRECATED,$(target)_PATH,$($(target)_DEFPATH), $(target)_DEFPATH)
- else ifndef $(target)_DEFPATH
-  $(target)_DEFPATH := $($(target)_PATH)
- endif
- ifndef $(target)_MAKEFILE
-  $(target)_MAKEFILE := $(MAKEFILE_CURRENT)
- endif
- ifndef $(target)_0_OUTDIR
-  $(target)_0_OUTDIR := $(call TARGET_PATH,$(target))
-  $(call KB_FN_ASSIGN_DEPRECATED,PATH_$(target),$($(target)_0_OUTDIR), $(target)_0_OUTDIR)
- endif
-endef
-
-##
-# Function to call to set _0_OUTDIR, _DEFPATH, and _MAKEFILE earlier than subfooter.
-# Can be used to avoid exploiting double expansion.
-#
-# @param 1     The target name.
-KB_FN_DO_PASS0_ON_TARGET = $(foreach target,$1,$(if-expr defined($(target)_0_OUTDIR),,$(evalval def_subfooter_header_target_pass)))
 
 
 #
