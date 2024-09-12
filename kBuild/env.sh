@@ -377,6 +377,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
         ia64)
             KBUILD_HOST_ARCH='ia64'
             ;;
+        loongarch64)
+            KBUILD_HOST_ARCH='loongarch64'
+            ;;
         m68k)
             KBUILD_HOST_ARCH='m68k'
             ;;
