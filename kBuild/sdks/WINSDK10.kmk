@@ -245,6 +245,9 @@ PATH_SDK_WINSDK10_BIN := $(PATH_SDK_WINSDK10_BASE_BIN)/$(SDK_WINSDK10_VERSION)/$
  endif
 endif
 
+# The x86 host directory (contains inf2cat.exe and other stuff missing in the others).
+PATH_SDK_WINSDK10_BIN.x86 := $(PATH_SDK_WINSDK10_BASE_BIN)/$(SDK_WINSDK10_VERSION)/x86
+
 #
 # Properties used by kBuild.
 #
