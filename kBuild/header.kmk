@@ -1076,6 +1076,40 @@ endif
 # @param 1     recipe name
 KB_FN_AUTO_CMD_DEPS = $(call KB_FN_AUTO_CMD_DEPS_EX,$1,$1.auto-dep)
 
+##
+# Call this (evalcall) this to explictly load tool by name.
+#
+# @param 1    	The tool name
+define KB_FN_LOAD_TOOL
+ifndef TOOL_$(1)
+ TOOL_$(1)_KMK_FILE := $(firstword $(foreach path, $(KBUILD_TOOL_PATHS) $(KBUILD_PATH)/tools $(KBUILD_DEFAULT_PATHS), $(wildcard $(path)/$(1).kmk)))
+ ifeq ($(TOOL_$(1)_KMK_FILE),)
+  $(error kBuild: Cannot find include file for the tool '$(1)'! Searched: $(KBUILD_TOOL_PATHS) $(KBUILD_PATH)/tools $(KBUILD_DEFAULT_PATHS))
+ endif
+ include $(TOOL_$(1)_KMK_FILE)
+ ifndef TOOL_$(1)
+  $(warning kBuild: TOOL_$(1) was not defined by $(TOOL_$(1)_KMK_FILE)!)
+ endif
+endif
+endef
+
+##
+# Call this (evalcall) this to explictly load an SDK by name.
+#
+# @param 1    	The SDK name
+define KB_FN_LOAD_SDK
+ifndef SDK_$(1)
+ SDK_$(1)_KMK_FILE := $(firstword $(foreach path, $(KBUILD_SDK_PATHS) $(KBUILD_PATH)/sdks $(KBUILD_DEFAULT_PATHS), $(wildcard $(path)/$(1).kmk)))
+ ifeq ($(SDK_$(1)_KMK_FILE),)
+  $(error kBuild: Cannot find include file for the SDK '$(1)'! Searched: $(KBUILD_SDK_PATHS) $(KBUILD_PATH)/sdks $(KBUILD_DEFAULT_PATHS))
+ endif
+ include $(SDK_$(1)_KMK_FILE)
+ ifndef SDK_$(1)
+  $(warning kBuild: SDK_$(1) was not defined by $(SDK_$(1)_KMK_FILE)!)
+ endif
+endif
+endef
+
 
 #
 # Initialize some of the globals which the Config.kmk and
