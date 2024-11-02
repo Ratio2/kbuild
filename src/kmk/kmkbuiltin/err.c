@@ -36,7 +36,9 @@
 # endif
 #else
 # include <stdlib.h>
-# define snprintf _snprintf
+# if _MSC_VER < 1400
+#  define snprintf _snprintf
+# endif
 #endif
 #include <stdio.h>
 #include <stdarg.h>

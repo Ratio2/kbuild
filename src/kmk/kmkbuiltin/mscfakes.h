@@ -47,6 +47,7 @@
 #include <sys/stat.h>
 #include <io.h>
 #include <direct.h>
+#include <stdio.h> /* unlink for UCRT */
 #include "nt/ntstat.h"
 #include "nt/ntunlink.h"
 #ifdef MSC_DO_64_BIT_IO
