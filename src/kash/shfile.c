@@ -1028,7 +1028,7 @@ int shfile_init(shfdtab *pfdtab, shfdtab *inherit)
                         ph -= dwPerH;
 
                         if (   (paf[i] & (FOPEN | FNOINHERIT)) == FOPEN
-                            && *ph != (uint32_t)INVALID_HANDLE_VALUE
+                            && *ph != (uint32_t)(uintptr_t)INVALID_HANDLE_VALUE
                             && *ph != 0)
                         {
                             HANDLE  h = (HANDLE)(intptr_t)*ph;
