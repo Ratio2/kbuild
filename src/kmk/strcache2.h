@@ -157,7 +157,7 @@ MY_INLINE unsigned int
 strcache2_calc_ptr_hash (struct strcache2 *cache, const char *str)
 {
   (void)cache;
-  return (size_t)str >> STRCACHE2_ENTRY_ALIGN_SHIFT;
+  return (unsigned int) ((size_t)str >> STRCACHE2_ENTRY_ALIGN_SHIFT);
 }
 
 /* Get the user value for the string. */
