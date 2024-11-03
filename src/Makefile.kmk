@@ -27,7 +27,7 @@ SUB_DEPTH = ..
 include $(KBUILD_PATH)/subheader.kmk
 
 include $(PATH_SUB_CURRENT)/lib/Makefile.kmk
-if1of ($(KBUILD_TARGET), )
+if1of ($(KBUILD_TARGET), win)
  include $(PATH_SUB_CURRENT)/sed/Makefile.kmk
 else
  include $(PATH_SUB_CURRENT)/oldsed/Makefile.kmk
