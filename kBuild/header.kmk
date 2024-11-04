@@ -794,6 +794,10 @@ MAKESHELL   := $(ASH)
 SHELL       := $(ASH)
 export SHELL MAKESHELL
 
+# We do not pick up IFS from either the environment nor the command line, as
+# that could lead to trouble...
+override IFS:=
+
 # Symlinking is problematic on some platforms...
 LN_SYMLINK  := $(LN) -s
 
