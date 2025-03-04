@@ -63,7 +63,7 @@ int __cdecl __stdio_common_vfprintf(unsigned __int64 fOptions, FILE *pFile, cons
      * Make sure we've got the fallback function before we start.
      */
     PFN_STDIO_COMMON_VFPRINTF_T pfnFallback = g_pfnFallback_vfprintf;
-    if (g_pfnFallback_vfprintf)
+    if (pfnFallback)
     { /* likely */ }
     else
     {
