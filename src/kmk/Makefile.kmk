@@ -312,7 +312,7 @@ kmk_SOURCES.win = \
 	w32/winchildren.c
 endif
 
-kmk_DEFS.win    += DEBUG_STDOUT_CLOSE_ISSUE
+#kmk_DEFS.win    += DEBUG_STDOUT_CLOSE_ISSUE
 kmk_SOURCES.win += ../lib/msc_buffered_printf.c
 
 kmk_DEFS.freebsd.x86 = CONFIG_WITHOUT_THREADS
