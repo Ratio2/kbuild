@@ -50,7 +50,7 @@ else
 endif
 
 # General Properties used by kBuild
-TOOL_WGET_FETCHFLAGS ?= --passive-ftp -t 5 -T 60
+TOOL_WGET_FETCHFLAGS ?= -t 5 -T 60
 
 ## Fetch one file.
 # @param    $(target)   Normalized main target name.
