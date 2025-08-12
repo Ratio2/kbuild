@@ -336,6 +336,7 @@ else if1of ($(KBUILD_TARGET), win nt)
 		'  <application>' \
 		'    <windowsSettings>' \
 		'      <activeCodePage xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">UTF-8</activeCodePage>' \
+		'      <longPathAware xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">true</longPathAware>' \
 		'    </windowsSettings>' \
 		'  </application>' \
 		'</assembly>' \
