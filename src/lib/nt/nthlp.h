@@ -39,6 +39,7 @@
 #define birdResolveImports() do { if (g_fResolvedNtImports) {} else birdResolveImportsWorker(); } while (0)
 void        birdResolveImportsWorker(void);
 extern int  g_fResolvedNtImports;
+extern OSVERSIONINFOEXW g_NtVerInfo;
 
 void       *birdTmpAlloc(size_t cb);
 void        birdTmpFree(void *pv);
@@ -52,6 +53,7 @@ int         birdSetErrnoFromWin32(DWORD dwErr);
 int         birdSetErrnoToNoMem(void);
 int         birdSetErrnoToInvalidArg(void);
 int         birdSetErrnoToBadFileNo(void);
+int         birdSetErrnoToDirNotEmpty(void);
 
 HANDLE      birdOpenFile(const char *pszPath, ACCESS_MASK fDesiredAccess, ULONG fFileAttribs,
                          ULONG fShareAccess, ULONG fCreateDisposition, ULONG fCreateOptions, ULONG fObjAttribs);

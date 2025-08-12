@@ -55,6 +55,8 @@ kUtil_SOURCES.win = \
        nt/nthlpcore.c \
        nt/nthlpfs.c \
        nt/ntdir.c \
+       nt/ntmkdirat.c \
+       nt/ntopenat.c \
        nt/ntstat.c \
        nt/ntunlink.c \
        nt/ntutimes.c \

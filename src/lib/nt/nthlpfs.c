@@ -148,10 +148,19 @@ int birdDosToNtPath(const char *pszPath, MY_UNICODE_STRING *pNtPath)
             /*
              * Convert the wide DOS path to an NT path.
              */
-            if (g_pfnRtlDosPathNameToNtPathName_U(wszTmp, pNtPath, NULL, FALSE))
+            if (g_pfnRtlDosLongPathNameToNtPathName_U_WithStatus)
+            {
+                rcNt = g_pfnRtlDosLongPathNameToNtPathName_U_WithStatus(wszTmp, pNtPath, NULL, NULL);
+                if (MY_NT_SUCCESS(rcNt))
+                    return 0;
+            }
+            else if (g_pfnRtlDosPathNameToNtPathName_U(wszTmp, pNtPath, NULL, NULL))
                 return 0;
+            else
+                rcNt = -1;
         }
-        rcNt = -1;
+        else
+            rcNt = -1;
     }
     return birdSetErrnoFromNt(rcNt);
 }
@@ -167,7 +176,14 @@ int birdDosToNtPathW(const wchar_t *pwszPath, MY_UNICODE_STRING *pNtPath)
     /*
      * Convert the wide DOS path to an NT path.
      */
-    if (g_pfnRtlDosPathNameToNtPathName_U(pwszPath, pNtPath, NULL, FALSE))
+    if (g_pfnRtlDosLongPathNameToNtPathName_U_WithStatus)
+    {
+        MY_NTSTATUS rcNt = g_pfnRtlDosLongPathNameToNtPathName_U_WithStatus(pwszPath, pNtPath, NULL, NULL);
+        if (MY_NT_SUCCESS(rcNt))
+            return 0;
+        return birdSetErrnoFromNt(rcNt);
+    }
+    if (g_pfnRtlDosPathNameToNtPathName_U(pwszPath, pNtPath, NULL, NULL))
         return 0;
     return birdSetErrnoFromNt(STATUS_NO_MEMORY);
 }
