@@ -1325,7 +1325,7 @@ fts_palloc(FTS *sp, size_t more, size_t cwcmore)
 
 	if (cwcmore) {
 		sp->fts_cwcpath += cwcmore + 256;
-		ptr = realloc(sp->fts_wcspath, sp->fts_cwcpath);
+		ptr = realloc(sp->fts_wcspath, sp->fts_cwcpath * sizeof(sp->fts_wcspath[0]));
 		if (ptr) {
 			sp->fts_wcspath = ptr;
 		} else {
