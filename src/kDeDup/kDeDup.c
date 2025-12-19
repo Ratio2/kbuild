@@ -1134,6 +1134,7 @@ int main(int argc, char **argv)
         /*
          * Display the result.
          */
+        printf("Scanned %" KU64_PRI " files, %" KU64_PRI " of which are already hardlinked.\n", g_cFiles, g_cHardlinked);
         printf("Found %" KU64_PRI " duplicate files, out which %" KU64_PRI " can be hardlinked saving %" KU64_PRI " bytes\n",
                g_cDuplicates, g_cDuplicatesSaved, g_cbDuplicatesSaved);
 
