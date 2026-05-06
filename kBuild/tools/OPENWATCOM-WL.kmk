@@ -48,7 +48,7 @@ TOOL_OPENWATCOM-WL_LINK_PROGRAM_DEPEND = $(foreach lib,$(libs),$(if $(findstring
 TOOL_OPENWATCOM-WL_LINK_PROGRAM_DEPORD =
 define TOOL_OPENWATCOM-WL_LINK_PROGRAM_CMDS
 	$(QUIET)$(APPEND) -tn $(outbase).rsp \
-		$(if $(flags),'$(flags)',) \
+		$(if $(flags),'$(quote-sh-sq $(flags))',) \
 		'Name $(call TOOL_OPENWATCOM_FIX_SLASHES_SQ,$(out)$(if $(suffix $(out)),,.))' \
 		'Option Map=$(call TOOL_OPENWATCOM_FIX_SLASHES_SQ,$(outbase)).map' \
 		$(foreach p,$(call TOOL_OPENWATCOM_FIX_SLASHES_SQ,$(libpath)),'LIBPath $p') \

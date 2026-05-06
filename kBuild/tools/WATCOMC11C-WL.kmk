@@ -47,7 +47,7 @@ TOOL_WATCOMC11C-WL_LINK_PROGRAM_DEPEND = $(foreach lib,$(libs),$(if $(findstring
 TOOL_WATCOMC11C-WL_LINK_PROGRAM_DEPORD =
 define TOOL_WATCOMC11C-WL_LINK_PROGRAM_CMDS
 	$(QUIET)$(APPEND) -tn $(outbase).rsp \
-		$(if $(flags),'$(flags)',) \
+		$(if $(flags),'$(quote-sh-sq $(flags))',) \
 		'Name $(subst /,\,$(out)$(if $(suffix $(out)),,.))' \
 		'Option Map=$(subst /,\,$(outbase)).map' \
 		$(foreach p,$(subst /,\,$(libpath)),'LIBPath $p') \
